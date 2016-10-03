@@ -1,6 +1,6 @@
 .catalog:
   name: "MongoDB"
-  version: "3.2.5-jbev0"
+  version: "3.2-jbev0"
   description: "MongoDB Replica Set by jbev"
   uuid: mongodb-1
   minimum_rancher_version: v0.46.0
