@@ -1,7 +1,0 @@
-name: Datadog
-description: |
-  Real-time performance tracking and visualization of your container-based application deployment
-version: 11.3.585-rancher1
-category: Monitoring
-maintainer: "Jan Bruder <jan@rancher.com>"
-license: The MIT License
