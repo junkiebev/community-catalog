@@ -8,8 +8,9 @@ mongo-cluster:
   command:
     - --dbpath
     - /data/db
-    - --port 27017
-    - --"${cluster_role}"
+    - --port 
+    - 27017
+    - --${cluster_role}
     - --replSet
     - "${replset_name}"
   image: mongo:3.2
