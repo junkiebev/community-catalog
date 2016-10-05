@@ -6,8 +6,9 @@ mongo-cluster:
   tty: true
   entrypoint: /opt/rancher/bin/entrypoint.sh
   command:
+    - --dbpath
+    - /data/db
     - --port 27017
-    - --dbpath /data/db
     - --${cluster_role}
     - --replSet
     - "${replset_name}"
