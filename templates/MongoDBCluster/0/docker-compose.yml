@@ -9,7 +9,7 @@ mongo-cluster:
     - --dbpath
     - /data/db
     - --port 27017
-    - --${cluster_role}
+    - --"${cluster_role}"
     - --replSet
     - "${replset_name}"
   image: mongo:3.2
