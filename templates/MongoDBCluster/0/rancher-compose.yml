@@ -1,0 +1,28 @@
+.catalog:
+  name: "MongoDB Sharded Cluster"
+  version: "MongoDBSC-v1"
+  description: "MongoDB Replica Set by jbev"
+  uuid: mongodb-1
+  minimum_rancher_version: v0.46.0
+  questions:
+    - variable: cluster_role
+      label: "ReplicaSet Role"
+      description: "Role of server - Config Server or Shard Server"
+      type: enum
+      options: # List of options if using type of `enum`
+        - "configsvr"
+        - "shardsvr"
+      required: true
+    - variable: replset_name
+      description: "Name of the MongoDB replicaSet - must be unique within the cluster"
+      label: "ReplicaSet Name"
+      type: "string"
+      required: true
+      default: "rs0"
+mongo-cluster:
+  scale: 3
+  retain_ip: true
+  metadata:
+    mongo:
+      yml:
+        replset.name: "${replset_name}"

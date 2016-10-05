@@ -1,0 +1,5 @@
+name: "MongoDB Sharded Cluster"
+description: |
+  MongoDB Sharded Cluster.
+version: 3.2
+category: Databases

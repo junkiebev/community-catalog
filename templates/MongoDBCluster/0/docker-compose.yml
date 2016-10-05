@@ -1,0 +1,39 @@
+mongo-cluster:
+  restart: always
+  environment:
+    MONGO_SERVICE_NAME: mongo-cluster
+    MONGO_CLUSTER_ROLE: "${cluster_role}"
+  tty: true
+  entrypoint: /opt/rancher/bin/entrypoint.sh
+  command:
+  - --port 27017
+  - --dbpath /data/db
+  - --replSet
+  - "${replset_name}"
+  - --"${cluster_role}"
+  image: mongo:3.2
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.sidekicks: mongo-base, mongo-datavolume
+  volumes_from:
+    - mongo-datavolume
+    - mongo-base
+mongo-base:
+  restart: always
+  net: none
+  tty: true
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.start_once: true
+  image: jeffkolb/mongodb-cluster-conf:v1.0.0
+  stdin_open: true
+  entrypoint: /bin/true
+mongo-datavolume:
+  net: none
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.start_once: true
+  volumes:
+    - /data/db
+  entrypoint: /bin/true
+  image: busybox
