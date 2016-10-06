@@ -2,7 +2,7 @@ mongo-cluster:
   restart: always
   environment:
     MONGO_SERVICE_NAME: mongo-cluster
-    MONGO_CLUSTER_ROLE: "${cluster_role}"
+    MONGO_CLUSTER_ROLE: ${cluster_role}
   tty: true
   entrypoint: /opt/rancher/bin/entrypoint.sh
   command:
@@ -10,7 +10,7 @@ mongo-cluster:
     - /data/db
     - --port 
     - "27017"
-    - --"${cluster_role}"
+    - --${cluster_role}
     - --replSet
     - "${replset_name}"
   image: mongo:3.2
