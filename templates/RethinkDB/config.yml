@@ -1,0 +1,7 @@
+name: graylog
+description: |
+  Open source log management that actually works.
+version: 2.1.1-1
+category: Logging
+maintainer: Jeff Kolb
+projectURL: https://www.graylog.org/
