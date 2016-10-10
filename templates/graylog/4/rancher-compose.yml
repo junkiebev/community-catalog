@@ -8,10 +8,12 @@
           label: "SHA2 Password"
           type: "string"
           required: true
+          default: "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
         - variable: graylog_secret
           description: "Password secret"
           label: "Password secret"
           type: "string"
+          default: "somepasswordpepper"
           required: true
         - variable: graylog_fqdn
           description: "IP or domain name"
