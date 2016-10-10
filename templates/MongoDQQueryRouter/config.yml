@@ -1,5 +1,0 @@
-name: "MongoDB Sharded Cluster Query Router"
-description: |
-  MongoDB Sharded Cluster.
-version: 3.2
-category: Databases
