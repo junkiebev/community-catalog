@@ -1,6 +1,6 @@
 name: Apache Kafka Manager
 description: |
-  (Experimental) Kafka Manager service
+  (Experimental) Kafka Manager service.
 version: 1.3.0.4-jbev1
 category: Clustering
 maintainer: "Jeff Kolb <jeff.kolb@intlfcstone.com>"
