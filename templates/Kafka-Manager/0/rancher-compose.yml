@@ -23,14 +23,12 @@
       description: |
         Choose the Zookeeper service to use.
       label: "Zookeeper stack/service"
-      default: "zookeeper/zk"
       required: true
       type: "service"
     - variable: "kafka_link"
       description: |
         Choose the Kafka service to use.
       label: "Kafka stack/service"
-      default: "kafka/broker"
       required: true
       type: "service"
 
