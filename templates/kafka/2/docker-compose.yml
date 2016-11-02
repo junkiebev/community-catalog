@@ -16,7 +16,7 @@ broker:
     - ENABLE_JMX=${enable_jmx}
     - JMXPORT=${jmx_port}
   ports:
-    - "9992:9992"
+    - "9092:9092"
     - ${jmx_port}
   external_links:
     - ${zk_link}:zk
