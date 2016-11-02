@@ -74,7 +74,7 @@
     - variable: "jmx_port"
       description: |
         This must be set if you would like to connect JMX agents to brokers
-        If you set this, it will be exposed on broker containers.
+        If you set this, it will be exposed on broker containers (ex. 9999:9999).
       label: "JMX Port:"
       required: false
       default: ""
