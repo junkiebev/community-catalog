@@ -1,6 +1,6 @@
 broker:
   tty: true
-  image: jeffkolb/alpine-kafka:v0.1.0
+  image: jeffkolb/alpine-kafka:v0.10.1.0
   volumes_from:
     - broker-volume
     - broker-conf
