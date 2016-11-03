@@ -1,6 +1,6 @@
 .catalog:
   name: Kafka
-  version: 0.10.1.0-rancher1
+  version: 0.10.1.0-rancher2
   description: |
     (Experimental) Apache Kafka cluster - JEFFK.
   minimum_rancher_version: v0.59.0
