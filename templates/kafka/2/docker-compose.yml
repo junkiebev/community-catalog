@@ -14,7 +14,7 @@ broker:
     - KAFKA_NUM_PARTITIONS=${kafka_num_partitions}
     - ADVERTISE_PUB_IP=${kafka_pub_ip}
     - ENABLE_JMX=${enable_jmx}
-    - JMX_PORT=${jmx_port}
+    - JMX_PORT=${jmx_port%*}
   ports:
     - "9092:9092"
     - ${jmx_port}
@@ -30,7 +30,7 @@ broker-conf:
     io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
     io.rancher.container.hostname_override: container_name
     io.rancher.container.start_once: true
-  image: jeffkolb/rancher-kafka:v0.1.0
+  image: jeffkolb/rancher-kafka:v0.1.0-1
   volumes:
     - /opt/tools
 broker-volume:
