@@ -47,16 +47,17 @@ broker-volume:
     - ${kafka_log_dir}
   volume_driver: local
   image: jeffkolb/alpine-volume:v0.1.0
- KafkaManager:
+kafka-manager:
   ports:
   - 9000:9000/tcp
+  image: sheepkiller/kafka-manager:1.3.1.6
+  environment:
+    - ZK_HOSTS=zk:2181
+    - APPLICATION_SECRET=${app_secret}
+    - KM_ARGS=${km_args}
   external_links:
-  - ${zk_link}:zk
-  labels:
-    io.rancher.container.hostname_override: container_name
+    - ${zk_link}:zk
+    - ${kafka_link}:kafka
+  labels: 
     io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
-  tty: true
-  dns:
-  - rancher.io
-  image: jeffkolb/kafka-manager-rancher:v0.1.3
-  stdin_open: true
+    io.rancher.container.hostname_override: container_name

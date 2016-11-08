@@ -87,6 +87,18 @@
       default: "kafka-zk/zk"
       required: true
       type: "service"
+    - variable: "app_secret"
+      description: "Application secret"
+      label: "Application secret"
+      required: true
+      default: "letmein"
+      type: "string"
+    - variable: "km_args"
+      description: "JVM arguments - Do not change this unless you know what you are doing!"
+      label: "JVM arguments:"
+      required: false
+      default: "-Djava.net.preferIPv4Stack=true"
+      type: "string"
 broker:
   scale: ${kafka_scale}
   retain_ip: true
@@ -97,8 +109,15 @@ broker:
     request_line: ''
     healthy_threshold: 2
     response_timeout: 5000
-KafkaManager:
+kafka-manager:
   scale: 1
   retain_ip: true
+  health_check:
+    port: 9000
+    interval: 30000
+    unhealthy_threshold: 3
+    strategy: recreate
+    response_timeout: 2000
+    healthy_threshold: 2
 
 
