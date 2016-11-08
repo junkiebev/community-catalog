@@ -97,4 +97,8 @@ broker:
     request_line: ''
     healthy_threshold: 2
     response_timeout: 5000
+KafkaManager:
+  scale: 1
+  retain_ip: true
+
 

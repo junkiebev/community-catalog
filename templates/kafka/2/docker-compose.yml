@@ -47,3 +47,16 @@ broker-volume:
     - ${kafka_log_dir}
   volume_driver: local
   image: jeffkolb/alpine-volume:v0.1.0
+ KafkaManager:
+  ports:
+  - 9000:9000/tcp
+  external_links:
+  - 'kafkazookeeper/zk:'
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.container.hostname_override: container_name
+  tty: true
+  dns:
+  - rancher.io
+  image: jeffkolb/kafka-manager-rancher:v0.1.3
+  stdin_open: true
