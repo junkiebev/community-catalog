@@ -51,7 +51,7 @@ broker-volume:
   ports:
   - 9000:9000/tcp
   external_links:
-  - 'kafkazookeeper/zk:'
+  - ${zk_link}:zk
   labels:
     io.rancher.container.pull_image: always
     io.rancher.container.hostname_override: container_name
