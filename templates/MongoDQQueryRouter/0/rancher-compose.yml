@@ -1,0 +1,26 @@
+.catalog:
+  name: "MongoDB Query Router"
+  version: "MongoDBQR-v1"
+  description: "MongoDB Query Router by jbev"
+  uuid: mongodb-1
+  minimum_rancher_version: v0.46.0
+  questions:
+    - variable: "config_service"
+      description: |
+        Choose the mongodb config cluster service to use. 
+      label: "MongoDB CS stack/service"
+      required: true
+      type: "service"
+    - variable: "dataset_service"
+      description: |
+        Choose the mongodb dataset cluster service to use. 
+      label: "MongoDB DS stack/service"
+      required: true
+      type: "service"
+mongo-queryrouter:
+  scale: 1
+  retain_ip: true
+  #metadata:
+  #  mongo:
+  #    yml:
+  #      replset.name: "${replset_name}"
