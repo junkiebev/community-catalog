@@ -1,4 +1,4 @@
-mongo-cluster:
+mongo-queryrouter:
   restart: always
   environment:
     MONGO_SERVICE_NAME: mongo-queryrouter
@@ -26,7 +26,7 @@ mongo-base:
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.container.start_once: true
-  image: jeffkolb/mongodb-cluster-conf:v1.0.0
+  image: jeffkolb/mongodb-qr-conf:v1.0.0
   stdin_open: true
   entrypoint: /bin/true
 mongo-datavolume:
