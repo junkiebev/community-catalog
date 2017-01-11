@@ -1,0 +1,67 @@
+version: '2'
+services:
+  KafkaManager:
+    image: jeffkolb/kafka-manager:0.2.0
+    environment:
+      ZK_HOSTS: zk:2181
+      APPLICATION_SECRET: letmein
+    stdin_open: true
+    external_links:
+    - KafkaZookeeper/zk:zk
+    tty: true
+    ports:
+    - 9000:9000/tcp
+    labels:
+      io.rancher.container.pull_image: always
+  broker-volume:
+    image: rawmind/alpine-volume:0.0.2-1
+    environment:
+      SERVICE_GID: '10003'
+      SERVICE_UID: '10003'
+      SERVICE_VOLUME: /opt/kafka/logs
+    volume_driver: local
+    external_links:
+    - KafkaZookeeper/zk:zk
+    network_mode: none
+    volumes:
+    - /opt/kafka/logs
+    labels:
+      io.rancher.container.start_once: 'true'
+      io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+      io.rancher.container.hostname_override: container_name
+  broker-conf:
+    image: rawmind/rancher-kafka:0.10.0.0-3
+    external_links:
+    - KafkaZookeeper/zk:zk
+    network_mode: none
+    volumes:
+    - /opt/tools
+    labels:
+      io.rancher.container.start_once: 'true'
+      io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+      io.rancher.container.hostname_override: container_name
+  broker:
+    image: jeffkolb/alpine-kafkav2:0.10.1.0
+    environment:
+      ADVERTISE_PUB_IP: 'true'
+      CONFD_INTERVAL: '60'
+      JVMFLAGS: -Xmx2048m -Xms2048m
+      KAFKA_DELETE_TOPICS: 'true'
+      KAFKA_LOG_DIRS: /opt/kafka/logs
+      KAFKA_LOG_RETENTION_HOURS: '168'
+      KAFKA_NUM_PARTITIONS: '1'
+      ZK_SERVICE: KafkaZookeeper/zk
+      JMX_PORT: '9999'
+    external_links:
+    - KafkaZookeeper/zk:zk
+    tty: true
+    volumes_from:
+    - broker-volume
+    - broker-conf
+    ports:
+    - 9999:9999/tcp
+    - 9092:9092/tcp
+    labels:
+      io.rancher.scheduler.affinity:container_label_soft_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
+      io.rancher.sidekicks: broker-volume,broker-conf
+      io.rancher.container.hostname_override: container_name
