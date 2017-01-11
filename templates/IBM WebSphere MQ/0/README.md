@@ -7,7 +7,7 @@
 ### Usage:
  1. Select IBM WebSphere MQ from catalog.
  2. Specify (or leave default) the port(s) to expose for external access to the liberty applications.
-    * **THESE MUST BE UNIQUE!**
+    * I suggest you leave these alone
  4. Click deploy.
 
-The IBM WebSphere MQ server can now be accessed over the ports that were provided. 
+The IBM WebSphere MQ server and WebSphere Liberty applications can now be accessed over the ports that were provided. 
