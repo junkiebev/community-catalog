@@ -19,6 +19,9 @@ services:
     volumes_from:
     - webspheremq-conf
     - webspheremq-datavolume
+    depends_on:
+    - webspheremq-datavolume
+    - webspheremq-conf
     ports:
     - ${ampq_listen_port}:1414
     labels:
@@ -30,7 +33,7 @@ services:
     - /bin/true
     network_mode: none
     volumes:
-    - /etc/mqm/config.mqsc
+    - /etc/mqm
     labels:
       io.rancher.container.start_once: 'true'
       io.rancher.container.hostname_override: container_name
@@ -44,6 +47,9 @@ services:
     - webspheremq-server:mqfull
     volumes_from:
     - webspheresender-conf
+    depends_on:
+    - webspheresender-conf
+    - webspheremq-server
     ports:
     - ${sender_ui_port}:9180
     - 9443
@@ -70,6 +76,9 @@ services:
     - webspheremq-server:mqfull
     volumes_from:
     - webspherereceiver-conf
+    depends_on:
+    - webspherereceiver-conf
+    - webspheremq-server
     ports:
     - ${receiver_ui_port}:9180
     - 9443
