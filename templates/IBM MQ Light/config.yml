@@ -1,7 +1,7 @@
 name: IBM MQ Light Server
 
 description: |
-  A simple yet powerful AMQP-based messaging API. Write apps that run locally, in the cloud, or alongside IBM MQ.
+  A simple yet powerful AMQP-based messaging API.
 version: 1.0.0
 category: Message queues
 maintainer: "Jeff Kolb <jeff.kolb@intlfcstone.com>"
