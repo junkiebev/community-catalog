@@ -38,8 +38,8 @@ services:
   sender:
     image: jeffkolb/rancher-websphere-sender:1
     environment:
-      LICENSE: accept
-      ADMIN_CENTER_PORT: ${sender_admin_port}
+    - LICENSE: accept
+    - ADMIN_CENTER_PORT: ${sender_admin_port}
     tty: true
     links:
     - mq:mqfull
