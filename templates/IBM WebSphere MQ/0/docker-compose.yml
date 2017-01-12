@@ -50,6 +50,7 @@ services:
     depends_on:
     - webspheresender-conf
     - webspheremq-server
+    - webspherereceiver-app
     ports:
     - ${sender_ui_port}:9180
     - 9443
