@@ -17,8 +17,8 @@ services:
       MQ_QMGR_NAME: ${mq_qmgr_name}
     tty: true
     volumes_from:
-    - webspheremq-conf
-    - webspheremq-datavolume
+      - webspheremq-conf
+      - webspheremq-datavolume
     ports:
     - ${ampq_listen_port}:1414
     labels:
