@@ -45,7 +45,6 @@ services:
     volumes_from:
     - webspheresender-conf
     depends_on:
-    - webspheresender-conf
     - mq
     - receiver
     ports:
@@ -75,7 +74,6 @@ services:
     volumes_from:
     - webspherereceiver-conf
     depends_on:
-    - webspherereceiver-conf
     - mq
     ports:
     - ${receiver_ui_port}:9080
