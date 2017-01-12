@@ -13,8 +13,8 @@ services:
   mq:
     image: jeffkolb/rancher-websphere-mq:9
     environment:
-    - LICENSE: "accept"
-    - MQ_QMGR_NAME: ${mq_qmgr_name}
+      - LICENSE: "accept"
+      - MQ_QMGR_NAME: ${mq_qmgr_name}
     tty: true
     volumes_from:
     - webspheremq-conf
