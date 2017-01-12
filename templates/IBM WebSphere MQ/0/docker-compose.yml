@@ -52,7 +52,7 @@ services:
     - webspheremq-server
     - webspherereceiver-app
     ports:
-    - ${sender_ui_port}:9180
+    - ${sender_ui_port}:9080
     - 9443
     labels:
       io.rancher.sidekicks: webspheresender-conf
@@ -81,7 +81,7 @@ services:
     - webspherereceiver-conf
     - webspheremq-server
     ports:
-    - ${receiver_ui_port}:9180
+    - ${receiver_ui_port}:9080
     - 9443
     labels:
       io.rancher.sidekicks: webspherereceiver-conf
