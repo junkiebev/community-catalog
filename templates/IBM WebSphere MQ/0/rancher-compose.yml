@@ -38,7 +38,7 @@ services:
   webspheremq-conf:
     scale: 1
     start_on_create: true
-  webspheremq-server:
+  mq:
     scale: 1
     start_on_create: true
   sender:
