@@ -13,7 +13,7 @@ services:
   mq:
     image: jeffkolb/rancher-websphere-mq:9
     environment:
-    - LICENSE: accept
+    - LICENSE: "accept"
     - MQ_QMGR_NAME: ${mq_qmgr_name}
     tty: true
     volumes_from:
@@ -38,7 +38,7 @@ services:
   sender:
     image: jeffkolb/rancher-websphere-sender:1
     environment:
-    - LICENSE: accept
+    - LICENSE: "accept"
     - ADMIN_CENTER_PORT: ${sender_admin_port}
     tty: true
     links:
