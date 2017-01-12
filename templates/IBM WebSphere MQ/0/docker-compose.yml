@@ -63,7 +63,7 @@ services:
     - /bin/true
     network_mode: none
     volumes:
-    - /opt/ibm/wlp/usr/servers/defaultServer/server.xml
+    - /opt/ibm/wlp/usr/servers/defaultServer
     labels:
       io.rancher.container.start_once: 'true'
       io.rancher.container.hostname_override: container_name
@@ -92,7 +92,7 @@ services:
     - /bin/true
     network_mode: none
     volumes:
-    - /opt/ibm/wlp/usr/servers/defaultServer/server.xml
+    - /opt/ibm/wlp/usr/servers/defaultServer
     labels:
       io.rancher.container.start_once: 'true'
       io.rancher.container.hostname_override: container_name
