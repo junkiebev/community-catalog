@@ -38,7 +38,8 @@ services:
   sender:
     image: jeffkolb/rancher-websphere-sender:1
     environment:
-      LICENSE: accept
+    - LICENSE: accept
+    - ADMIN_CENTER_PORT: ${sender_admin_port}
     tty: true
     links:
     - mq:mqfull
@@ -49,7 +50,7 @@ services:
     - receiver
     ports:
     - ${sender_ui_port}:9080
-    - 9443
+    - ${sender_admin_port}:9443
     labels:
       io.rancher.sidekicks: webspheresender-conf
       io.rancher.container.hostname_override: container_name
@@ -67,7 +68,8 @@ services:
   receiver:
     image: jeffkolb/rancher-websphere-receiver:1
     environment:
-      LICENSE: accept
+    - LICENSE: accept
+    - ADMIN_CENTER_PORT: ${sender_admin_port}
     tty: true
     links:
     - mq:mqfull
@@ -77,7 +79,7 @@ services:
     - mq
     ports:
     - ${receiver_ui_port}:9080
-    - 9443
+    - ${receiver_admin_port}:9443
     labels:
       io.rancher.sidekicks: webspherereceiver-conf
       io.rancher.container.hostname_override: container_name

@@ -17,12 +17,24 @@
       type: "string"
       required: true
       default: "32783"
+     - variable: sender_admin_port
+      description: "Public port to expose for the sender admin center UI."
+      label: "Sender Admin Center UI Port"
+      type: "string"
+      required: true
+      default: "32782"
     - variable: receiver_ui_port
       description: "Public port to expose for the receiver web UI."
       label: "Receiver web UI Port"
       type: "string"
       required: true
       default: "32785"
+    - variable: receiver_admin_port
+      description: "Public port to expose for the receiver admin center UI."
+      label: "Receiver Admin Center UI Port"
+      type: "string"
+      required: true
+      default: "32784"
     - variable: mq_qmgr_name
       description: "Name of the WebSphere Message Queue Manager."
       label: "Queue Manager name."
