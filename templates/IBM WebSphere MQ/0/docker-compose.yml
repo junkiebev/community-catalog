@@ -19,9 +19,6 @@ services:
     volumes_from:
     - webspheremq-conf
     - webspheremq-datavolume
-    depends_on:
-    - webspheremq-datavolume
-    - webspheremq-conf
     ports:
     - ${ampq_listen_port}:1414
     labels:
@@ -48,9 +45,7 @@ services:
     volumes_from:
     - webspheresender-conf
     depends_on:
-    - webspheresender-conf
-    - webspheremq-server
-    - webspherereceiver-app
+    - receiver
     ports:
     - ${sender_ui_port}:9080
     - 9443
@@ -75,8 +70,6 @@ services:
     tty: true
     links:
     - webspheremq-server:mqfull
-    volumes_from:
-    - webspherereceiver-conf
     depends_on:
     - webspherereceiver-conf
     - webspheremq-server
