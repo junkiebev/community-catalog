@@ -41,13 +41,13 @@ services:
   webspheremq-server:
     scale: 1
     start_on_create: true
-  webspheresender-app:
+  sender:
     scale: 1
     start_on_create: true
   webspheresender-conf:
     scale: 1
     start_on_create: true
-  webspherereceiver-app:
+  receiver:
     scale: 1
     start_on_create: true
   webspherereceiver-conf:

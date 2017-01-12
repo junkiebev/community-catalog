@@ -38,7 +38,7 @@ services:
       io.rancher.container.start_once: 'true'
       io.rancher.container.hostname_override: container_name
   
-  webspheresender-app:
+  sender:
     image: jeffkolb/rancher-websphere-sender:1
     environment:
       LICENSE: accept
@@ -68,7 +68,7 @@ services:
       io.rancher.container.start_once: 'true'
       io.rancher.container.hostname_override: container_name
   
-  webspherereceiver-app:
+  receiver:
     image: jeffkolb/rancher-websphere-receiver:1
     environment:
       LICENSE: accept
