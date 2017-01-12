@@ -48,7 +48,7 @@ services:
     - receiver
     ports:
     - ${sender_ui_port}:9080
-    - 9443
+    - 9443:9443
     labels:
       io.rancher.sidekicks: webspheresender-conf
       io.rancher.container.hostname_override: container_name
@@ -75,7 +75,7 @@ services:
     - webspheremq-server
     ports:
     - ${receiver_ui_port}:9080
-    - 9443
+    - 9443:9443
     labels:
       io.rancher.sidekicks: webspherereceiver-conf
       io.rancher.container.hostname_override: container_name
