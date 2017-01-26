@@ -10,10 +10,10 @@ services:
     labels:
       io.rancher.container.start_once: 'true'
       io.rancher.container.hostname_override: container_name
-  webspheremq-server:
+  mq:
     image: jeffkolb/rancher-websphere-mq:9
     environment:
-      LICENSE: accept
+      LICENSE: "accept"
       MQ_QMGR_NAME: ${mq_qmgr_name}
     tty: true
     volumes_from:
@@ -38,17 +38,19 @@ services:
   sender:
     image: jeffkolb/rancher-websphere-sender:1
     environment:
-      LICENSE: accept
+      LICENSE: "accept"
+      ADMIN_CENTER_PORT: ${sender_admin_port}
     tty: true
     links:
-    - webspheremq-server:mqfull
+    - mq:mqfull
     volumes_from:
     - webspheresender-conf
     depends_on:
+    - mq
     - receiver
     ports:
     - ${sender_ui_port}:9080
-    - 9443:9443
+    - ${sender_admin_port}:9443
     labels:
       io.rancher.sidekicks: webspheresender-conf
       io.rancher.container.hostname_override: container_name
@@ -67,15 +69,17 @@ services:
     image: jeffkolb/rancher-websphere-receiver:1
     environment:
       LICENSE: accept
+      ADMIN_CENTER_PORT: ${sender_admin_port}
     tty: true
     links:
-    - webspheremq-server:mqfull
-    depends_on:
+    - mq:mqfull
+    volumes_from:
     - webspherereceiver-conf
-    - webspheremq-server
+    depends_on:
+    - mq
     ports:
     - ${receiver_ui_port}:9080
-    - 9443:9443
+    - ${receiver_admin_port}:9443
     labels:
       io.rancher.sidekicks: webspherereceiver-conf
       io.rancher.container.hostname_override: container_name
