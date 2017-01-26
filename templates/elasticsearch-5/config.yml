@@ -1,4 +1,4 @@
-name: Elasticsearch 2.x
+name: Elasticsearch 5.x
 description: |
   Elasticsearch, you know for search!
 version: 5.1.2-jeffk
