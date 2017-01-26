@@ -1,0 +1,5 @@
+name: Elasticsearch 2.x
+description: |
+  Elasticsearch, you know for search!
+version: 5.1.2-jeffk
+category: ELK
