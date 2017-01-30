@@ -1,5 +1,5 @@
 elasticsearch-masters:
-  image: jeffkolb/elasticsearch-conf:v0.6.0
+  image: jeffkolb/escnftry:0.0.1
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: elasticsearch-base-master,elasticsearch-datavolume-masters
@@ -29,7 +29,7 @@ elasticsearch-base-master:
 
 
 elasticsearch-datanodes:
-  image: jeffkolb/elasticsearch-conf:v0.6.0
+  image: jeffkolb/escnftry:0.0.1
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: elasticsearch-base-datanode,elasticsearch-datavolume-datanode
@@ -64,7 +64,7 @@ elasticsearch-base-datanode:
 
 
 elasticsearch-clients:
-  image: jeffkolb/elasticsearch-conf:v0.6.0
+  image: jeffkolb/escnftry:0.0.1
   labels:
     io.rancher.container.hostname_override: container_name
     io.rancher.sidekicks: elasticsearch-base-clients,elasticsearch-datavolume-clients
