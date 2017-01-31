@@ -1,13 +1,15 @@
-version: '2'
-services:
-  logstash:
-    scale: 1
-    start_on_create: true
-  logspout:
-    start_on_create: true
-  elasticsearch1:
-    scale: 1
-    start_on_create: true
-  kibana:
-    scale: 1
-    start_on_create: true
+.catalog:
+  name: "Elasticsearch"
+  version: "5.1.2-rancher3"
+  description: "Elasticsearch. You know, for search"
+logstash:
+  scale: 1
+  start_on_create: true
+logspout:
+  start_on_create: true
+elasticsearch1:
+  scale: 1
+  start_on_create: true
+kibana:
+  scale: 1
+  start_on_create: true
