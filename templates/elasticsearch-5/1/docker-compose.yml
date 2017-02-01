@@ -49,8 +49,9 @@ services:
         hard: 65536
         soft: 65536
     volumes_from:
-    - elastic-config
     - elastic-data
+    volumes:
+    - /usr/share/elasticsearch/config
     ports:
     - 9200:9200/tcp
     - 9300:9300/tcp
@@ -63,8 +64,8 @@ services:
       ELASTICSEARCH_URL: http://elasticsearch:9200
       SERVER_HOST: 0.0.0.0
       SERVER_PORT: '5601'
-    volumes_from:
-    - kibana-volume
+    volumes:
+    - /etc/kibana/
     links:
     - elasticsearch-clients:elasticsearch
     ports:
