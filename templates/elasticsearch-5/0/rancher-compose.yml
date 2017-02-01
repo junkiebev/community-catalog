@@ -8,7 +8,7 @@ logstash:
   start_on_create: true
 logspout:
   start_on_create: true
-elasticsearch1:
+elasticsearch-clients:
   scale: 1
   start_on_create: true
 kibana:

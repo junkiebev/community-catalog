@@ -5,7 +5,7 @@ services:
     volumes:
     - /etc/logstash/conf.d
     links:
-    - elasticsearch1:elasticsearch
+    - elasticsearch-clients:elasticsearch
     ports:
     - 5000:5000/tcp
     - 6000:6000/tcp
@@ -30,7 +30,7 @@ services:
     labels:
       io.rancher.scheduler.global: 'true'
       io.rancher.container.hostname_override: container_name
-  elasticsearch1:
+  elasticsearch-clients:
     cap_add:
     - IPC_LOCK
     image: elasticsearch:5
@@ -38,7 +38,7 @@ services:
       ES_JAVA_OPTS: -Xms1g -Xmx1g -Des.path.conf=/usr/share/elasticsearch/config
       cluster.name: elasticsearch
       discovery.zen.minimum_master_nodes: '1'
-      discovery.zen.ping.unicast.hosts: elasticsearch1
+      discovery.zen.ping.unicast.hosts: elasticsearch-clients
       network.host: 0.0.0.0
     ulimits:
       memlock:
@@ -64,7 +64,7 @@ services:
     volumes:
     - /etc/kibana/
     links:
-    - elasticsearch1:elasticsearch
+    - elasticsearch-clients:elasticsearch
     ports:
     - 5601:5601/tcp
     labels:
