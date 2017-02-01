@@ -72,7 +72,6 @@ services:
     labels:
       io.rancher.container.hostname_override: container_name
       io.rancher.sidekicks: kibana-volume
-
   logstash-config:
     network_mode: none
     labels:
@@ -82,7 +81,7 @@ services:
     - /etc/logstash/conf.d
     image: alpine:3.4
   elastic-config:
-    network_node: none
+    network_mode: none
     labels:
       io.rancher.container.hostname_override: container_name
       io.rancher.container.start_once: true
