@@ -56,7 +56,7 @@ services:
     - 9300:9300/tcp
     labels:
       io.rancher.container.hostname_override: container_name
-      io.rancher.sidekicks: elastic-data, elastic-config
+      io.rancher.sidekicks: elastic-data
   kibana:
     image: kibana:5
     environment:
@@ -71,7 +71,6 @@ services:
     - 5601:5601/tcp
     labels:
       io.rancher.container.hostname_override: container_name
-      io.rancher.sidekicks: kibana-volume
   logstash-config:
     entrypoint:
     - /bin/true
@@ -82,16 +81,16 @@ services:
     volumes:
     - /etc/logstash/conf.d
     image: alpine:3.4
-  elastic-config:
-    entrypoint:
-    - /bin/true
-    network_mode: none
-    labels:
-      io.rancher.container.hostname_override: container_name
-      io.rancher.container.start_once: true
-    volumes:
-    - /usr/share/elasticsearch/config
-    image: alpine:3.4
+#  elastic-config:
+#    entrypoint:
+#    - /bin/true
+#    network_mode: none
+#    labels:
+#      io.rancher.container.hostname_override: container_name
+#      io.rancher.container.start_once: true
+#    volumes:
+#    - /usr/share/elasticsearch/config
+#    image: alpine:3.4
   elastic-data:
     entrypoint:
     - /bin/true
@@ -102,13 +101,13 @@ services:
     volumes:
     - /usr/share/elasticsearch/data
     image: alpine:3.4
-  kibana-volume:
-    entrypoint:
-    - /bin/true
-    network_mode: none
-    labels:
-      io.rancher.container.hostname_override: container_name
-      io.rancher.container.start_once: true
-    volumes:
-    - /etc/kibana/
-    image: alpine:3.4
+#  kibana-volume:
+#    entrypoint:
+#    - /bin/true
+#    network_mode: none
+#    labels:
+#      io.rancher.container.hostname_override: container_name
+#      io.rancher.container.start_once: true
+#    volumes:
+#    - /etc/kibana/
+#    image: alpine:3.4
