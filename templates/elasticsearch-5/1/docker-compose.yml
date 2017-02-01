@@ -5,7 +5,7 @@ services:
     volumes:
     - /etc/logstash/conf.d
     links:
-    - elasticsearch1:elasticsearch
+    - elasticsearch-clients:elasticsearch
     ports:
     - 5000:5000/tcp
     - 6000:6000/tcp
