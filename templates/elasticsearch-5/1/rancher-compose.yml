@@ -1,8 +1,8 @@
 .catalog:
   name: "Elasticsearch"
-  version: "5.1.2-rancher3"
+  version: "5.1.2-rancher4"
   description: "Elasticsearch. You know, for search"
-  uuid: elasticsearchfive-jeffk-1
+  uuid: elasticsearchfive-jeffk-2
 logstash:
   scale: 1
   start_on_create: true
