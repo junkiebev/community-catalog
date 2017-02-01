@@ -2,8 +2,8 @@ version: '2'
 services:
   logstash:
     image: logstash:5
-    volumes:
-    - /etc/logstash/conf.d
+    volumes_from:
+    - logstash-config
     links:
     - elasticsearch-clients:elasticsearch
     ports:
@@ -16,6 +16,7 @@ services:
     - input { udp { port => 5000 codec => "json" } tcp { port => 6000 codec => "json" } } output { elasticsearch { hosts => "elasticsearch:9200"} }
     labels:
       io.rancher.container.hostname_override: container_name
+      io.rancher.sidekicks: logstash-config
   logspout:
     image: bekt/logspout-logstash:latest
     environment:
@@ -47,25 +48,60 @@ services:
       nofile:
         hard: 65536
         soft: 65536
-    volumes:
-    - /usr/share/elasticsearch/config
-    - /usr/share/elasticsearch/data
+    volumes_from:
+    - elastic-config
+    - elastic-data
     ports:
     - 9200:9200/tcp
     - 9300:9300/tcp
     labels:
       io.rancher.container.hostname_override: container_name
+      io.rancher.sidekicks: elastic-data, elastic-config
   kibana:
     image: kibana:5
     environment:
       ELASTICSEARCH_URL: http://elasticsearch:9200
       SERVER_HOST: 0.0.0.0
       SERVER_PORT: '5601'
-    volumes:
-    - /etc/kibana/
+    volumes_from:
+    - kibana-volume
     links:
     - elasticsearch-clients:elasticsearch
     ports:
     - 5601:5601/tcp
     labels:
       io.rancher.container.hostname_override: container_name
+      io.rancher.sidekicks: kibana-volume
+
+  logstash-config:
+    net: none
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.container.start_once: true
+    volumes:
+    - /etc/logstash/conf.d
+    image: alpine:3.4
+  elastic-config:
+    net: none
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.container.start_once: true
+    volumes:
+    - /usr/share/elasticsearch/config
+    image: alpine:3.4
+  elastic-data:
+    net: none
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.container.start_once: true
+    volumes:
+    - /usr/share/elasticsearch/data
+    image: alpine:3.4
+  kibana-volume:
+    net: none
+    labels:
+      io.rancher.container.hostname_override: container_name
+      io.rancher.container.start_once: true
+    volumes:
+    - /etc/kibana/
+    image: alpine:3.4
