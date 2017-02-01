@@ -73,6 +73,8 @@ services:
       io.rancher.container.hostname_override: container_name
       io.rancher.sidekicks: kibana-volume
   logstash-config:
+    entrypoint:
+    - /bin/true
     network_mode: none
     labels:
       io.rancher.container.hostname_override: container_name
@@ -81,6 +83,8 @@ services:
     - /etc/logstash/conf.d
     image: alpine:3.4
   elastic-config:
+    entrypoint:
+    - /bin/true
     network_mode: none
     labels:
       io.rancher.container.hostname_override: container_name
@@ -89,6 +93,8 @@ services:
     - /usr/share/elasticsearch/config
     image: alpine:3.4
   elastic-data:
+    entrypoint:
+    - /bin/true
     network_mode: none
     labels:
       io.rancher.container.hostname_override: container_name
@@ -97,6 +103,8 @@ services:
     - /usr/share/elasticsearch/data
     image: alpine:3.4
   kibana-volume:
+    entrypoint:
+    - /bin/true
     network_mode: none
     labels:
       io.rancher.container.hostname_override: container_name
