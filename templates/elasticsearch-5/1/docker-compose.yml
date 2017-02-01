@@ -90,7 +90,7 @@ services:
     - /usr/share/elasticsearch/config
     image: alpine:3.4
   elastic-data:
-    net_mode: none
+    network_mode: none
     labels:
       io.rancher.container.hostname_override: container_name
       io.rancher.container.start_once: true
