@@ -63,7 +63,7 @@ services:
     environment:
       ELASTICSEARCH_URL: http://elasticsearch:9200
       SERVER_HOST: 0.0.0.0
-      SERVER_PORT: '5601'
+      SERVER_PORT: ${kibana_port}:5601
     volumes:
     - /etc/kibana/
     links:
