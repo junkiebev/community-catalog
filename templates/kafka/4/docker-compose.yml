@@ -14,7 +14,7 @@ broker:
     - KAFKA_NUM_PARTITIONS=${kafka_num_partitions}
     - ADVERTISE_PUB_IP=${kafka_pub_ip}
     - ENABLE_JMX=${enable_jmx}
-    - JMXPORT=${jmx_port}
+    - JMX_PORT=${jmx_port}
   ports:
     - "9092:9092"
     - ${jmx_port}:${jmx_port}
