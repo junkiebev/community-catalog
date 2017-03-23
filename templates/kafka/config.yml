@@ -1,7 +1,7 @@
 name: Apache Kafka
 description: |
-  (Experimental) Kafka cluster JEFFK
-version: 0.10.1.0-rancher1
+  (Experimental) Kafka cluster with management JEFFK
+version: 0.10.2.0-rancher
 category: Clustering
 maintainer: "Jeff Kolb <jeff.kolb@intlfcstone.com>"
 minimum_rancher_version: v0.59.0
