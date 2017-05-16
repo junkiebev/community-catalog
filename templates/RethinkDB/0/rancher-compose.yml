@@ -1,7 +1,27 @@
 .catalog:
-  name: # Name of the versioned template of the Catalog Entry
-  version: # Version of the versioned template of the Catalog Entry
-  description: # Description of the versioned template of the Catalog Entry
-  uuid: # Unique identifier to be used for upgrades. Please see note.
-  minimum_rancher_version: # The minimum version of Rancher that supports the template
-  questions: #Used to request user input for configuration options
+  name: "RethinkDB"
+  version: "2.3.5"
+  description: "(Experimental) NoSQL-Database"
+  uuid: rethinkdb-0
+  questions:
+    - variable: "rethinkdb_volume_driver"
+      description: ""
+      label: "Volume Driver:"
+      required: true
+      type: "string"
+      default: "local"
+    - variable: "rethinkdb_proxy_port"
+      description: ""
+      label: "Proxy Port:"
+      required: true
+      type: "int"
+      default: 8080
+
+version: '2'
+services:
+  rethinkdb:
+    scale: 1
+    start_on_create: true
+  rethinkdb-proxy:
+    scale: 1
+    start_on_create: true

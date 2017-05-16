@@ -1,0 +1,7 @@
+name: RethinkDB
+description: |
+  Scalable JSON database the realtime web
+version: 2.1.1-1
+category: Databases
+maintainer: Jeff Kolb
+projectURL: https://www.rethinkdb.com/
